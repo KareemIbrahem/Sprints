@@ -8,8 +8,7 @@ addItem = () => {
     let todo = document.getElementById("inp").value;
     let priorityGet = document.getElementById("priority").value;
 
-    if(todo && priorityGet){
-
+    if (todo && priorityGet) {
         var item = {
             id: count,
             description: todo,
@@ -21,13 +20,12 @@ addItem = () => {
 
         document.getElementById("inp").value = "";
 
-
         displayList(items);
 
         count++;
+    } else {
+        alert("Type something");
     }
-    else alert("Type something");
-    
 }
 
 displayList = list => {
@@ -38,17 +36,17 @@ displayList = list => {
 
     changeInfo(list);
 
-    list.map( elem => {
+    list.map(elem => {
         let tag = document.createElement("li");
         if (elem.completed) tag.setAttribute("class", "checked");
-        else tag.setAttribute("class","");
-        tag.setAttribute("id",elem.id);
+        else tag.setAttribute("class", "");
+        tag.setAttribute("id", elem.id);
 
         let text = document.createTextNode(elem.description);
         tag.appendChild(text);
 
         let span = document.createElement("SPAN");
-        span.setAttribute("class","close");
+        span.setAttribute("class", "close");
         span.setAttribute("onclick", `deleteCurrent(${elem.id})`)
         text = document.createTextNode("X");
         span.appendChild(text);
@@ -67,7 +65,7 @@ displayList = list => {
         span.appendChild(text);
         tag.appendChild(span);
 
-        document.getElementById("todos").appendChild(tag); 
+        document.getElementById("todos").appendChild(tag);
     })
 }
 
@@ -77,7 +75,6 @@ currentIndex = id => {
     return currentId;
 }
 
-
 deleteCurrent = id => {
     items.splice(currentIndex(id), 1);
     if (fltr === "all") displayList(items);
@@ -85,25 +82,28 @@ deleteCurrent = id => {
 }
 
 editCurrent = id => {
-    let newVal = prompt("Add the new value of this to-do:",items[currentIndex(id)].description);
+    let newVal = prompt("Add the new value of this to-do:", items[currentIndex(id)].description);
 
-    if (newVal === null || newVal === ""){
+    if (newVal === null || newVal === "") {
         alert("No new value added. Keeping the old value.");
-    }
-    else{
+    } else {
         items[currentIndex(id)].description = newVal;
-        if(fltr === "all") displayList(items);
+        if (fltr === "all") displayList(items);
         else sortList(fltr);
     }
 }
 
 sortList = pr => {
-    if(pr != "all"){ 
-        const sorter = items.filter( item => item.priority === pr);
+    if (pr != "all") {
+        const sorter = items.filter(item => item.priority === pr);
+        sorter.sort((a, b) => a.priority.localeCompare(b.priority));
         displayList(sorter);
         fltr = pr;
+    } else {
+        items.sort((a, b) => a.priority.localeCompare(b.priority));
+        displayList(items);
+        fltr = "all";
     }
-    else {displayList(items); fltr = "all"}
 }
 
 lister.addEventListener('click', check => {
