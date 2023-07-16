@@ -1,0 +1,16 @@
+<p>customers works!</p>
+
+
+<button type="button" (click)="showOrders = !showOrders">Create Order</button>
+
+<ng-container *ngIf="showOrders">
+    <app-orders [item]="currentItem" (newItemEvent)="addItem($event)"></app-orders>
+    
+    <ul>
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul>
+  </ng-container>
+  
+
+
+<router-outlet></router-outlet>
