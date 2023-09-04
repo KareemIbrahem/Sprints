@@ -1,0 +1,26 @@
+<ng-container *ngFor="let product of products">
+  <div class="product-item" *ngIf="shouldBeViewed(product)">
+    <div style="width: 30%">
+      <div>
+        <img [src]="product.imageProduct" class="product-img" />
+      </div>
+      <div class="product-desc">
+        <h2>{{ product.nameProduct }}</h2>
+        <span *ngIf="largerThan100(product)">{{ product.priceProduct }}$</span>
+        <h3
+          class="h3"
+          *ngIf="product.isAvailable"
+          [ngClass]="{ available: product.isAvailable }"
+        >
+          Avaliable
+        </h3>
+        <h3
+          *ngIf="!product.isAvailable"
+          [ngStyle]="{ color: product.isAvailable ? 'Green' : 'Red' }"
+        >
+          Not Avaliable
+        </h3>
+      </div>
+    </div>
+  </div>
+</ng-container>

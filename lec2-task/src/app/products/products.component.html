@@ -1,0 +1,13 @@
+<filter-root
+  [featuredCount]="featured"
+  [avaliableCount]="avaliableCount"
+  [all]="all"
+  (filterChangedEvent)="onFilterChanged($event)"
+></filter-root>
+<h1>Our Products</h1>
+<div class="productsSection">
+  <productItem-root
+    [products]="getProducts()"
+    [filter]="filter"
+  ></productItem-root>
+</div>
