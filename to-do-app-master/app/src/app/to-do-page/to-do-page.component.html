@@ -1,0 +1,61 @@
+<nav>
+    <a (click)="logout()">Logout</a>
+</nav>
+
+<h1>
+    <span>Welcome back,</span>
+    <img [src]="user.avatar" alt="">
+    <span>{{user.name}}</span>
+</h1>
+
+<p>You have got {{ (tasks|unCompleted).length }} tasks to do. </p>
+
+
+<section>
+
+    <button class="add" (click)="modal=true" ><i class="fa-solid fa-plus"></i> Add new task...</button>
+
+    <form class="modal" onsubmit="return false" *ngIf="modal">
+        <textarea #taskInput rows="10" placeholder="Describe the task, first three words will be the task title"></textarea>
+        <i (click)="add()" class="fa-solid fa-circle-plus"></i>
+    </form>
+    <div class="grayBack" *ngIf="modal" (click)="modal=false"></div>
+
+    <ng-container *ngFor="let task of tasks; index as i">
+        <article class="task" *ngIf="!task.completed">
+
+            <h3>{{task.task.split(" ").slice(0,3).join(" ")}}</h3>
+    
+            <p>{{task.task}}</p>
+
+            <div>
+                <button (click)="complete(i)"> <i class="fa-regular fa-circle-check"></i> Complete</button>
+                <button (click)="delete(i)"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+
+    
+        </article>
+    </ng-container>
+
+
+
+    <fieldset>
+        <legend> Completed </legend>
+    
+        <ng-container *ngFor="let task of tasks; index as i">
+            <article class="task completed" *ngIf="task.completed">
+                <h3>{{task.task.split(" ").slice(0,3).join(" ")}}</h3>
+        
+                <p>{{task.task}}</p>
+
+                <div>
+                    <button (click)="delete(i)"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+                
+        
+            </article>
+        </ng-container>
+
+    </fieldset>
+
+</section>

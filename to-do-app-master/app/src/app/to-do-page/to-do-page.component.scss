@@ -1,0 +1,174 @@
+$color1 : #EEEEEE;
+$color2 : #00ADB5;
+$color3 : #393E46;
+$color4 : #222831;
+
+:host{
+    display: block;
+    font-family: sans-serif;
+    background-color: $color1;
+    margin: 0px;
+    padding-left: 5%;
+    padding-top: 20px;
+    color: $color4;
+}
+
+nav{
+    height: fit-content;
+    text-align: end;
+    a{
+        margin-top: 20px;
+        font-size: 20px;
+        margin-right: 50px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0px;
+
+    span{
+
+    }
+
+    img{
+        width: 50px;
+        border: solid;
+        border-radius: 50%;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+}
+
+p{
+    margin-top: 5px;
+    color: $color3;
+}
+
+section{
+    
+    width: 90%;
+    max-width: 800px;
+    display: block;
+    margin: auto;
+
+    button.add{
+        margin-top: 40px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        
+    }
+
+    button.add:hover{
+        color: $color2;
+    }
+
+    .task{
+        background-color: $color3;
+        color: white;
+        padding: 10px;
+        padding-left: 30px;
+        box-sizing: border-box;
+        margin-top: 20px;
+        border-radius: 30px;
+
+        h3{
+            color: $color2;
+        }
+        p{
+            margin-top: 5px;
+            color: white;
+
+        }
+
+        div{
+            text-align: end;
+            padding-right: 10px;
+
+            button{
+                margin-right: 20px;
+                background-color: transparent;
+                border: none;
+                color: $color2;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+
+    fieldset{
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+        margin-top: 50px;
+        
+        legend{
+            font-size: 20px;
+        }
+
+        .task{   
+            text-decoration: line-through;
+        }
+
+    }
+
+
+    .modal{
+        position: absolute;
+        top:calc(50vh - 150px);
+        left:calc(50vw - 250px);
+        width: 500px;
+        height: 300px;
+        background-color: $color3;
+        border-radius: 50px;
+        box-sizing: border-box;
+        padding: 10px;
+        z-index: 100;
+    
+        textarea{
+            box-sizing: border-box;
+            width: 100%;
+            height: 75%;
+            margin-top: 10px;
+            padding:30px;
+            background-color: $color3;
+            color: white;
+            border: none;
+            font-size: 18px;
+        }
+        textarea:focus{
+            outline: none;
+        }
+    
+        i{
+            color: $color2;
+            font-size: 45px;
+            display: block;
+            float: right;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+    
+    }
+    
+    .grayBack{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: rgba(128, 128, 128, 0.39);
+        cursor:pointer;
+    }
+
+
+}

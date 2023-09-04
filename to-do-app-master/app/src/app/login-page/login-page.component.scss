@@ -1,0 +1,95 @@
+
+$color1 : #EEEEEE;
+$color2 : #00ADB5;
+$color3 : #393E46;
+$color4 : #222831;
+
+fieldset{
+
+    background-color: $color1;
+    position: fixed;
+    width: 500px;
+    height: 400px;
+    top: calc(50% - 200px);
+    left: calc(50% - 250px);;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px;
+    font-family: sans-serif;
+
+    legend{
+        font-size: 20px;
+        font-weight: 900;
+        color: $color4;
+        letter-spacing: 3px;
+    }
+
+    .user{
+        padding: 10px;
+        height: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 33% 33% 33%;
+        grid-template-areas: 'img name' 'img username' 'img a' ;
+        overflow: hidden;
+        cursor: pointer;
+
+        img{
+            grid-area: img;
+            margin: auto;
+            height: 90%;
+            width: 100px;
+            object-fit: contain;
+            border: solid;
+            border-color: $color3;
+        }
+        span:nth-child(2){
+            grid-area: name;
+            font-size: 25px;
+        }
+        span:nth-child(3){
+            grid-area: username;
+        }
+
+        span:nth-child(4){
+            grid-area: a;
+            color: $color3;
+            text-decoration: underline;
+        }
+        span:nth-child(4):hover{
+            color: $color2;
+
+        }
+    }
+
+    .user:hover{
+        background-color: #00acb538;
+    }
+
+}
+
+
+form{
+
+    div{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        input{
+            margin-left: 10px;
+        }
+    }
+
+    button{
+        display: block;
+        margin: auto;
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color:$color3;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+    }
+}

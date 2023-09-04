@@ -1,0 +1,33 @@
+
+<fieldset>
+
+    <legend>Login</legend>
+
+
+    <ng-container *ngFor="let user of users; index as i">
+
+        <div class="user" *ngIf="!userIsChoosed || choosedUser == i"  (click)="choose(i)">
+            <img [src]="user.avatar" alt="">
+            <span>{{user.name}}</span>
+            <span>{{user.username}}</span>
+            <span (click)="unChoose($event)" *ngIf="userIsChoosed">Choose another account</span>
+        </div>
+
+    </ng-container>
+
+    
+
+
+    <form *ngIf="userIsChoosed" onsubmit="return false">
+
+        <div>
+            <label for="password">Enter Password : </label>
+            <input #password type="password" >
+        </div>
+
+        <button (click)="login()">Login</button>
+
+    </form>
+
+
+ </fieldset>
